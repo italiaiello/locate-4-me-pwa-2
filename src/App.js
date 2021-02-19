@@ -9,7 +9,7 @@ function App() {
 
   const [route, setRoute] = useState('home')
 
-  const onRouteChange = (newRoute) => setRoute(newRoute)
+  const onRouteChange = (newRoute) => setRoute(newRoute) 
 
   const loadPage = () => {
     switch(route) {

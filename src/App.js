@@ -3,7 +3,9 @@ import MapContainer from './pages/MapContainer/MapContainer';
 import Register from './pages/Register/Register';
 import SignIn from './pages/SignIn/SignIn';
 import StartScreen from './pages/StartScreen/StartScreen';
+import AddToHomescreen from 'react-add-to-homescreen';
 import './App.css';
+import { handleAddToHomeScreen } from './functions/handleAddToHomeScreen';
 
 function App() {
 
@@ -32,6 +34,7 @@ function App() {
         {
           loadPage()
         }
+        <AddToHomescreen onAddToHomescreenClick={handleAddToHomeScreen} />
     </div>
   );
 }

@@ -36,5 +36,28 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: 'AIzaSyCiRHh7hmFCKanlFR64NNUJYVR26GQS32U',
+        authDomain: "parking-sensors-database.firebaseapp.com",
+        databaseURL: "https://parking-sensors-database-default-rtdb.firebaseio.com",
+        projectId: "parking-sensors-database",
+        storageBucket: "parking-sensors-database.appspot.com",
+        messagingSenderId: "317804578807",
+        appId: "1:317804578807:web:a07df3f2602e6df41550f2",
+        measurementId: "G-V3B3VBYMPJ"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>

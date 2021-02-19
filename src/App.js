@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react'
+import MapContainer from './pages/MapContainer/MapContainer';
+import Register from './pages/Register/Register';
+import SignIn from './pages/SignIn/SignIn';
+import StartScreen from './pages/StartScreen/StartScreen';
 import './App.css';
 
 function App() {
+
+  const [route, setRoute] = useState('home')
+
+  const onRouteChange = (newRoute) => setRoute(newRoute)
+
+  const loadPage = () => {
+    switch(route) {
+      case 'start':
+        return <StartScreen onRouteChange={onRouteChange} />
+      case 'register':
+        return <Register onRouteChange={onRouteChange} />
+      case 'signin':
+        return <SignIn onRouteChange={onRouteChange} />
+      case 'home':
+        return <MapContainer />
+      default:
+        return <>Invalid route</>
+    }
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="scrollDiv" className="App">
+        {
+          loadPage()
+        }
     </div>
   );
 }

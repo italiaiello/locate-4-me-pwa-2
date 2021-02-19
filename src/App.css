@@ -2,37 +2,313 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3, h4, button, .logo-text, .author-text, button, .parking-options {
+  font-family: BankGothic;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  font-family: 'Source Sans Pro', 'Helvetica Neue';
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-size: 2.5rem;
+}
+
+.ps-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  min-height: 100vh;
+}
+
+.ps-section h1 {
+  margin-bottom: 0;
+  
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+/* Start Screen */
+
+.start-screen-img {
+  width: 70%;
+}
+
+.author-text {
+  font-size: 1.8rem;
+  margin-top: 0;
+}
+
+.logo-text {
+  margin: 0;
+}
+
+.first-span {
+  color: #6E33A6;
+}
+
+.second-span {
+  color: #FC6825;
+}
+
+.logo-sub-text {
+  font-family: 'Source Sans Pro';
+  margin: 0;
+}
+
+/* Register and SignIn */
+
+.form-section .image-placeholder {
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-width: 15px;
+}
+
+.form-heading {
+  font-size: 2rem;
+  margin: 0;
+  color: #6E33A6;
+}
+
+.form-img {
+  width: 70%;
+}
+
+.btn {
+  width: 70%;
+  height: 50px;
+  border: none;
+  background-color: #6E33A6;
+  border-radius: 5px;
   color: white;
+  font-size: 1.3rem;
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+.ps-form-btn {
+  width: 100%;
+  height: 45px;
+  font-size: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ps-form {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.alternate-link {
+  width: 100%;
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.alternate-link span {
+  color: #6E33A6;
+}
+
+.alternate-link span:hover, .alternate-link span:active {
+  opacity: 0.8;
+}
+
+/* Register */
+
+.small-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-field {
+  width: 95%;
+  height: 40px;
+  margin-bottom: 7px;
+  padding: 0 7px;
+  border: 1px solid #c0c0c0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.small-input {
+  width: 44%;
+}
+
+/* Map Container */
+
+.map-heading {
+  color: #6E33A6;
+  position: absolute;
+  top: 10px;
+  z-index: 99;
+  left: 10px;
+  background-color: white;
+  padding: 10px 20px;
+  box-shadow: 1px 1px 3px #cfcfcf;
+  border-radius: 20px;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Location Pin and Tooltip */
+
+.location-tooltip {
+  width: 64px;
+  position: relative;
+}
+
+/* Location Pin */
+
+.orange-pin {
+  color: #FC6825;
+}
+
+.purple-pin {
+  color: #6E33A6;
+}
+
+.blue-pin {
+  color: #00C2FF;
+}
+
+.red-pin {
+  color: #F61000;
+}
+
+/* Tooltip */
+
+.tooltip {
+  width: 150px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: -100px;
+  z-index: 10;
+}
+
+.tooltip p {
+  margin: 0;
+}
+
+.orange {
+  background-color: #FC6825;
+}
+
+.purple {
+  background-color: #6E33A6;
+}
+
+.blue {
+  background-color: #00C2FF;
+}
+
+.red {
+  background-color: #F61000;
+}
+
+/* Parking Options */
+
+#all-option .option-selected {
+  opacity: 1;
+}
+
+.parking-options-container {
+  width: 80%;
+  height: auto;
+  position: absolute;
+  bottom: 40px;
+  left: 12px;
+}
+
+.option-name {
+  width: 50%;
+  height: 30px;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 1px 1px 3px #cfcfcf;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.option-name p {
+  font-size: 0.8rem;
+  margin: 0;
+  /* color: #A6413C; */
+}
+
+.close-button {
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.parking-options {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 1px 1px 3px #cfcfcf;
+  color: #b9a4ce;
+}
+
+.parking-options p {
+  font-size: 0.9rem;
+  margin-right: 10px;
+  color: #aaaaaa;
+}
+
+.options-article {
+  width: 65%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.option {
+  width: 20px;
+  max-height: 35px;
+  margin: 0;
+  opacity: 0.4;
+}
+
+#parking-meter {
+  height: 35px;
+}
+
+#wings {
+  width: 38px;
+}
+
+#no-spot {
+  width: 30px;
+}
+
+.option-selected {
+  opacity: 1;
 }

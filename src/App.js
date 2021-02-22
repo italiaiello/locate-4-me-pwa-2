@@ -6,6 +6,7 @@ import StartScreen from './pages/StartScreen/StartScreen';
 import AddToHomescreen from 'react-add-to-homescreen';
 import './App.css';
 import { handleAddToHomeScreen } from './functions/handleAddToHomeScreen';
+import Logo from "./assets/images/logo192.png";
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
         {
           loadPage()
         }
-        <AddToHomescreen onAddToHomescreenClick={handleAddToHomeScreen} />
+        <AddToHomescreen icon={Logo} onAddToHomescreenClick={handleAddToHomeScreen} />
     </div>
   );
 }

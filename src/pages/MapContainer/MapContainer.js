@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Map from '../../components/Map/Map'
 import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
+import Logout from '../../assets/icons/logout.svg'
 
-const MapContainer = () => {
+const MapContainer = ({ onRouteChange }) => {
 
     const [showOrangePins, setShowOrangePins] = useState(true)
     const [showPurplePins, setShowPurplePins] = useState(true)
@@ -47,7 +48,14 @@ const MapContainer = () => {
 
     return (
         <section className="map-container">
-            <h2 className="map-heading">Parking Spots Near You</h2>
+            <article className="map-heading-logout-container">
+                <h2 className="map-heading">Parking Spots Near You</h2>
+                <div className="logout" onClick={() => onRouteChange('start')}>
+                    <figure className="logout-figure">
+                        <img src={Logout} alt="Log out" className="responsive-img" />
+                    </figure>
+                </div>
+            </article>
             <Map 
                 location={location} 
                 zoomLevel={17} 

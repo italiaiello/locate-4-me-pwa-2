@@ -149,18 +149,51 @@ h1 {
 
 /* Map Container */
 
-.map-heading {
-  color: #6E33A6;
+.map-heading-logout-container {
+  width: 70%;
+  height: 100px;
   position: absolute;
   top: 10px;
   z-index: 99;
   left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.map-heading {
+  color: #6E33A6;
   background-color: white;
   padding: 10px 20px;
   box-shadow: 1px 1px 3px #cfcfcf;
   border-radius: 20px;
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
+}
+
+.logout {
+  background-color: white;
+  border-radius: 30px;
+  width: 35px;
+  height: 80px;
+  margin-top: 10px;
+  box-shadow: 1px 1px 3px #cfcfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.logout-figure {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
+.logout-figure .responsive-img {
+  height: 100%;
+  width: auto;
 }
 
 /* Location Pin and Tooltip */

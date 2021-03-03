@@ -23,7 +23,7 @@ function App() {
       case 'signin':
         return <SignIn onRouteChange={onRouteChange} />
       case 'home':
-        return <MapContainer />
+        return <MapContainer onRouteChange={onRouteChange} />
       default:
         return <>Invalid route</>
     }

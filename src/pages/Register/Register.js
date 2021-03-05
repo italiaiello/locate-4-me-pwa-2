@@ -45,20 +45,22 @@ const Register = ({ onRouteChange }) => {
     return (
         <section className="ps-section space-around">
             <h2 className="form-heading">Register</h2>
-            <figure className="form-img">
-                <img src={RegisterImg} alt="Undraw Illustration" className="responsive-img" />
-            </figure>
-            <form className="ps-form">
-                <article className="small-input-container">
-                    <input className="form-field small-input" placeholder="First Name" onChange={onFirstNameChange} />
-                    <input className="form-field small-input" placeholder="Last Name" onChange={onLastNameChange} />
-                </article>
-                <input className="form-field" placeholder="Email" onChange={onEmailChange} />
-                <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
-                <input className="form-field" placeholder="Confirm Password" type="password" onChange={onConfirmPasswordChange} />
-                <button className="btn ps-form-btn" onClick={onSubmitRegister}>Register</button>
-                <p className="alternate-link">Already have an account? <span onClick={() => onRouteChange('signin')}>Sign In</span></p>
-            </form>
+            <article className="form-wrapper">
+                <figure className="form-img">
+                    <img src={RegisterImg} alt="Undraw Illustration" className="responsive-img" />
+                </figure>
+                <form className="ps-form">
+                    <article className="small-input-container">
+                        <input className="form-field small-input" placeholder="First Name" onChange={onFirstNameChange} />
+                        <input className="form-field small-input" placeholder="Last Name" onChange={onLastNameChange} />
+                    </article>
+                    <input className="form-field" placeholder="Email" onChange={onEmailChange} />
+                    <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
+                    <input className="form-field" placeholder="Confirm Password" type="password" onChange={onConfirmPasswordChange} />
+                    <button className="btn ps-form-btn" onClick={onSubmitRegister}>Register</button>
+                    <p className="alternate-link">Already have an account? <span onClick={() => onRouteChange('signin')}>Sign In</span></p>
+                </form>
+            </article>
         </section>
     )
 }

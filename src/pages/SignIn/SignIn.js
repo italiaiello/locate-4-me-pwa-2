@@ -36,15 +36,17 @@ const SignIn = ({ onRouteChange }) => {
     return (
         <section className="ps-section space-around">
             <h2 className="form-heading">Sign In</h2>
-            <figure className="form-img">
-                <img src={SignInImg} alt="Undraw Illustration" className="responsive-img" />
-            </figure>
-            <form className="ps-form">
-                <input className="form-field" placeholder="Email" onChange={onEmailChange} />
-                <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
-                <button className="btn ps-form-btn" onClick={onSubmitSignin}>Sign In</button>
-                <p className="alternate-link">Don't have an account? <span onClick={() => onRouteChange('register')}>Register</span></p>
-            </form>
+            <article className="form-wrapper">
+                <figure className="form-img">
+                    <img src={SignInImg} alt="Undraw Illustration" className="responsive-img" />
+                </figure>
+                <form className="ps-form">
+                    <input className="form-field" placeholder="Email" onChange={onEmailChange} />
+                    <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
+                    <button className="btn ps-form-btn" onClick={onSubmitSignin}>Sign In</button>
+                    <p className="alternate-link">Don't have an account? <span onClick={() => onRouteChange('register')}>Register</span></p>
+                </form>
+            </article>
         </section>
     )
 }

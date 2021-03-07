@@ -7,7 +7,7 @@ import { pins } from '../../Pins/Pins'
 import { getPinColor } from '../../functions/getPinColor'
 import { renderPins } from '../../functions/renderPins'
 
-const Map = ({ location, zoomLevel, showOrangePins, showPurplePins, showBluePins, showRedPins }) => {
+const Map = ({ location, isLocationAllowed, zoomLevel, showOrangePins, showPurplePins, showBluePins, showRedPins }) => {
 
   return (
     <section className="map">
@@ -21,6 +21,7 @@ const Map = ({ location, zoomLevel, showOrangePins, showPurplePins, showBluePins
           options={{ styles: MapStyles }}
         >
           {
+
             pins.map((pin, index) => {
               const pinColor = getPinColor(pin.type)
               return (
@@ -44,6 +45,24 @@ const Map = ({ location, zoomLevel, showOrangePins, showPurplePins, showBluePins
                 null
               )
             })
+          }
+          {
+            isLocationAllowed ?
+            <LocationPinAndTooltip
+              lat={location.lat} 
+              lng={location.lng} 
+              type={"Home"} 
+              hours={"N/A"} 
+              days={"N/A"}
+              address={"Your Current Location"}
+              pinColor={"blue"}
+              showOrangePins={showOrangePins}
+              showPurplePins={showPurplePins}
+              showBluePin={showBluePins}
+              showRedPins={showRedPins}
+            />
+            :
+            null
           }
         </GoogleMapReact>
       </div>

@@ -230,6 +230,13 @@ h1 {
   width: auto;
 }
 
+.location-spinner-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Location Pin and Tooltip */
 
 .location-tooltip {

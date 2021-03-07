@@ -1,20 +1,48 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Map from '../../components/Map/Map'
 import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
 import Logout from '../../assets/icons/logout.svg'
+import LocationSpinner from '../../assets/images/location-spinner.svg'
 
 const MapContainer = ({ onRouteChange }) => {
+
+    const [currentLocation, setCurrentLocation] = useState(null)
+    const [locationError, setLocationError] = useState(null)
+
+    useEffect(() => {
+        const successCallback = (position) => {
+            console.log(position)
+            setCurrentLocation({
+                address: "Your Current Location",
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            })
+        }
+
+        const errorCallback = (error) => {
+            setLocationError(error.message)
+            console.error(error)
+        }
+
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
+            timeout: 5000
+        })
+
+
+    }, [])
 
     const [showOrangePins, setShowOrangePins] = useState(true)
     const [showPurplePins, setShowPurplePins] = useState(true)
     const [showBluePins, setShowBluePins] = useState(true)
     const [showRedPins, setShowRedPins] = useState(true)
 
-    const location = {
+    // If user denies access to location, or an error occurs, the map can fallback on this location
+    const defaultLocation = {
         address: '1 Anderson St, Chatswood NSW 2067',
         lat: -33.7971,
         lng: 151.1836,
     }
+
 
     const onOptionSelect = (e) => {
         const options = document.getElementsByClassName('option');
@@ -56,14 +84,37 @@ const MapContainer = ({ onRouteChange }) => {
                     </figure>
                 </div>
             </article>
-            <Map 
-                location={location} 
-                zoomLevel={17} 
-                showOrangePins={showOrangePins} 
-                showPurplePins={showPurplePins} 
-                showBluePins={showBluePins} 
-                showRedPins={showRedPins} 
-            />
+            {
+                locationError !== null ?
+                <Map 
+                    location={defaultLocation}
+                    isLocationAllowed={false}
+                    zoomLevel={17} 
+                    showOrangePins={showOrangePins} 
+                    showPurplePins={showPurplePins} 
+                    showBluePins={showBluePins} 
+                    showRedPins={showRedPins} 
+                />
+                :
+                (
+                    currentLocation !== null ?
+                    <Map 
+                        location={currentLocation} 
+                        isLocationAllowed={true}
+                        zoomLevel={17} 
+                        showOrangePins={showOrangePins} 
+                        showPurplePins={showPurplePins} 
+                        showBluePins={showBluePins} 
+                        showRedPins={showRedPins} 
+                    />
+                    :
+                    <article className="location-spinner-container">
+                        <figure className="location-spinner">
+                            <img src={LocationSpinner} alt="Location Spinner" className="responsive-img" />
+                        </figure>
+                    </article>
+                )
+            }
             <ParkingOptions 
                 onOptionSelect={onOptionSelect} 
                 setShowOrangePins={setShowOrangePins}

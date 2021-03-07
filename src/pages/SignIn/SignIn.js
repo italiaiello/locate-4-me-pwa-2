@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SignInImg from '../../assets/images/signin.svg'
 import { signin } from '../../helpers/auth'
 import Spinner from '../../assets/images/spinner.svg'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 const SignIn = ({ onRouteChange }) => {
 
@@ -9,23 +10,26 @@ const SignIn = ({ onRouteChange }) => {
     const [password, setPassword] = useState('')
 
     const [isSigningIn, setIsSigningIn] = useState(false)
+    const [showError, setShowError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
 
-    const onEmailChange = e => setEmail(e.target.value)
-    const onPasswordChange = e => setPassword(e.target.value)
+    const onEmailChange = e => { setEmail(e.target.value); setShowError(false) }
+    const onPasswordChange = e => { setPassword(e.target.value); setShowError(false) }
 
     const isFormValid = () => {
         if (!email.trim().length || !password.trim().length) {
             return false;
         }
-        
+
         return true
     }
 
     const onSubmitSignin =  async (e) => {
         e.preventDefault();
-        if (!isFormValid) {
-            console.log('Invalid form')
+        if (!isFormValid()) {
+            setErrorMessage("Please fill in fields correctly")
+            setShowError(true)
             return;
         }
         try {
@@ -35,6 +39,8 @@ const SignIn = ({ onRouteChange }) => {
             onRouteChange('home')
             setIsSigningIn(false)
         } catch (error) {
+            setShowError(true)
+            setErrorMessage("Incorrect email and password combination")
             setIsSigningIn(false)
             console.log(error)
         }
@@ -50,6 +56,9 @@ const SignIn = ({ onRouteChange }) => {
                 <form className="ps-form">
                     <input className="form-field" placeholder="Email" onChange={onEmailChange} />
                     <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
+                    {
+                        showError ? <ErrorMessage message={errorMessage} /> : null
+                    }
                     {
                         isSigningIn ?
                         <figure className="btn spinner-figure">

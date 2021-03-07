@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import RegisterImg from '../../assets/images/register.svg'
 import { register } from '../../helpers/auth'
 import Spinner from '../../assets/images/spinner.svg'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 const Register = ({ onRouteChange }) => {
 
@@ -12,30 +13,48 @@ const Register = ({ onRouteChange }) => {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const [isRegistering, setIsRegistering] = useState(false)
+    const [showError, setShowError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
 
-    const onFirstNameChange = e => setFirstName(e.target.value)
-    const onLastNameChange = e => setLastName(e.target.value)
-    const onEmailChange = e => setEmail(e.target.value)
-    const onPasswordChange = e => setPassword(e.target.value)
-    const onConfirmPasswordChange = e => setConfirmPassword(e.target.value)
+    const onFirstNameChange = e => { setFirstName(e.target.value); setShowError(false) }
+    const onLastNameChange = e => { setLastName(e.target.value); setShowError(false) }
+    const onEmailChange = e => { setEmail(e.target.value); setShowError(false) }
+    const onPasswordChange = e => { setPassword(e.target.value); setShowError(false) }
+    const onConfirmPasswordChange = e => { setConfirmPassword(e.target.value); setShowError(false) }
+
+    const checkPasswordsMatch = () => {
+        if (password === confirmPassword) {
+            return true
+        }
+
+        return false
+    }
 
     const isFormValid = () => {
         if (!firstName.trim().length || !lastName.trim().length ||
             !email.trim().length || !password.trim().length ||
             !confirmPassword.trim().length) {
                 return false;
-            }
+        }
         
         return true
     }
 
+
     const onSubmitRegister =  async (e) => {
         e.preventDefault();
-        if (!isFormValid) {
-            console.log('Invalid form')
+        if (!isFormValid()) {
+            setErrorMessage("Please fill in fields correctly")
+            setShowError(true)
+            return;
+
+        } else if (isFormValid() && !checkPasswordsMatch()) {
+            setErrorMessage("Passwords don't match")
+            setShowError(true)
             return;
         }
+
         try {
             setIsRegistering(true)
             const response = await register(email, password);
@@ -43,6 +62,8 @@ const Register = ({ onRouteChange }) => {
             setIsRegistering(false)
             onRouteChange('home')
         } catch (error) {
+            setErrorMessage(error.message)
+            setShowError(true)
             setIsRegistering(false)
             console.log(error)
         }
@@ -63,6 +84,9 @@ const Register = ({ onRouteChange }) => {
                     <input className="form-field" placeholder="Email" onChange={onEmailChange} />
                     <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
                     <input className="form-field" placeholder="Confirm Password" type="password" onChange={onConfirmPasswordChange} />
+                    {
+                        showError ? <ErrorMessage message={errorMessage} /> : null
+                    }
                     {
                         isRegistering ?
                         <figure className="btn spinner-figure">

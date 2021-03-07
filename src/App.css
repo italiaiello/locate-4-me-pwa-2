@@ -149,6 +149,10 @@ h1 {
   height: 35px;
 }
 
+.error-message {
+  color: #d35555;
+}
+
 /* Register */
 
 .small-input-container {

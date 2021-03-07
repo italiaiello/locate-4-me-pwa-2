@@ -14,7 +14,7 @@ const StartScreen = ({ onRouteChange }) => {
             <figure className="start-screen-img">
                 <img src={StartScreenImg} alt="Undraw illustration" className="responsive-img" />
             </figure>
-            <button className="btn" onClick={() => onRouteChange('signin')}>Start</button>
+            <button className="btn start-btn" onClick={() => onRouteChange('signin')}>Start</button>
         </section>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import RegisterImg from '../../assets/images/register.svg'
 import { register } from '../../helpers/auth'
+import Spinner from '../../assets/images/spinner.svg'
 
 const Register = ({ onRouteChange }) => {
 
@@ -9,6 +10,8 @@ const Register = ({ onRouteChange }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const [isRegistering, setIsRegistering] = useState(false)
 
 
     const onFirstNameChange = e => setFirstName(e.target.value)
@@ -34,11 +37,14 @@ const Register = ({ onRouteChange }) => {
             return;
         }
         try {
-          const response = await register(email, password);
-          console.log(response)
-          onRouteChange('home')
+            setIsRegistering(true)
+            const response = await register(email, password);
+            console.log(response)
+            setIsRegistering(false)
+            onRouteChange('home')
         } catch (error) {
-          console.log(error)
+            setIsRegistering(false)
+            console.log(error)
         }
     }
 
@@ -57,7 +63,14 @@ const Register = ({ onRouteChange }) => {
                     <input className="form-field" placeholder="Email" onChange={onEmailChange} />
                     <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
                     <input className="form-field" placeholder="Confirm Password" type="password" onChange={onConfirmPasswordChange} />
-                    <button className="btn ps-form-btn" onClick={onSubmitRegister}>Register</button>
+                    {
+                        isRegistering ?
+                        <figure className="btn spinner-figure">
+                            <img src={Spinner} alt="Spinner" className="responsive-img spinner" />
+                        </figure>
+                        :
+                        <button className="btn ps-form-btn" onClick={onSubmitRegister}>Register</button>
+                    }
                     <p className="alternate-link">Already have an account? <span onClick={() => onRouteChange('signin')}>Sign In</span></p>
                 </form>
             </article>

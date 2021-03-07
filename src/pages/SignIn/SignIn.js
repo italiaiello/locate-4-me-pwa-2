@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import SignInImg from '../../assets/images/signin.svg'
 import { signin } from '../../helpers/auth'
+import Spinner from '../../assets/images/spinner.svg'
 
 const SignIn = ({ onRouteChange }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const [isSigningIn, setIsSigningIn] = useState(false)
+
 
     const onEmailChange = e => setEmail(e.target.value)
     const onPasswordChange = e => setPassword(e.target.value)
@@ -25,11 +29,14 @@ const SignIn = ({ onRouteChange }) => {
             return;
         }
         try {
-          const response = await signin(email, password);
-          console.log(response)
-          onRouteChange('home')
+            setIsSigningIn(true)
+            const response = await signin(email, password);
+            console.log(response)
+            onRouteChange('home')
+            setIsSigningIn(false)
         } catch (error) {
-          console.log(error)
+            setIsSigningIn(false)
+            console.log(error)
         }
     }
 
@@ -43,7 +50,14 @@ const SignIn = ({ onRouteChange }) => {
                 <form className="ps-form">
                     <input className="form-field" placeholder="Email" onChange={onEmailChange} />
                     <input className="form-field" placeholder="Password" type="password" onChange={onPasswordChange} />
-                    <button className="btn ps-form-btn" onClick={onSubmitSignin}>Sign In</button>
+                    {
+                        isSigningIn ?
+                        <figure className="btn spinner-figure">
+                            <img src={Spinner} alt="Spinner" className="responsive-img spinner" />
+                        </figure>
+                        :
+                        <button className="btn ps-form-btn" onClick={onSubmitSignin}>Sign In</button>
+                    }
                     <p className="alternate-link">Don't have an account? <span onClick={() => onRouteChange('register')}>Register</span></p>
                 </form>
             </article>

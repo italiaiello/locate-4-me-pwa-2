@@ -36,6 +36,17 @@ h1 {
   justify-content: space-around;
 }
 
+.btn {
+  width: 70%;
+  height: 50px;
+  border: none;
+  background-color: #6E33A6;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+  outline: none;
+}
+
 /* Start Screen */
 
 .start-screen-img {
@@ -93,20 +104,8 @@ h1 {
   width: 70%;
 }
 
-.btn {
-  width: 70%;
-  height: 50px;
-  border: none;
-  background-color: #6E33A6;
-  border-radius: 5px;
-  color: white;
-  font-size: 1.3rem;
-  outline: none;
-}
-
 .ps-form-btn {
   width: 100%;
-  height: 45px;
   font-size: 1rem;
 }
 
@@ -131,6 +130,23 @@ h1 {
 
 .alternate-link span:hover, .alternate-link span:active {
   opacity: 0.8;
+}
+
+.spinner-figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  cursor: auto;
+}
+
+.spinner-figure:hover {
+  opacity: 1;
+}
+
+.spinner {
+  width: 35px;
+  height: 35px;
 }
 
 /* Register */
@@ -371,15 +387,30 @@ h1 {
     opacity: 0.9;
   }
 
+  .spinner-figure {
+    cursor: auto;
+  }
+
+  .spinner-figure:hover {
+    opacity: 1;
+  }
+
   .alternate-link {
     width: 93%;
     font-size: 1rem;
+  }
+
+  .alternate-link span {
     cursor: pointer;
   }
 
   /* Start Screen */
   .start-screen-img {
     width: 35%;
+  }
+
+  .start-btn {
+    width: 40%;
   }
 
   /* Sign In and Register Screens */

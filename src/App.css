@@ -237,6 +237,32 @@ h1 {
   align-items: center;
 }
 
+/* Map Splash Page */
+
+.splash-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-page-image {
+  width: 60%;
+}
+
+.splash-page-spinner {
+  width: 20%;
+  margin: 50px 0;
+}
+
+.splash-page-message {
+  width: 100%;
+  font-size: 1.2rem;
+  color: #6E33A6;
+}
+
 /* Location Pin and Tooltip */
 
 .location-tooltip {
@@ -389,6 +415,10 @@ h1 {
 
 @media only screen and (min-width: 800px) {
 
+  .pin {
+    width: 7vw;
+  }
+
   .btn {
     width: 93%;
     cursor: pointer;
@@ -460,6 +490,104 @@ h1 {
 
   .google-map {
     height: 100%;
+  }
+
+  /* Map Splash Page */
+
+  .splash-page-image {
+    width: 25%;
+  }
+  
+  .splash-page-spinner {
+    width: 10%;
+    margin: 50px 0;
+  }
+
+  /* Parking Options */
+
+  .parking-options-container {
+    width: 60%;
+    height: auto;
+    position: absolute;
+    bottom: 40px;
+    left: 12px;
+  }
+  
+  .option-name {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 1px 1px 3px #cfcfcf;
+    border-radius: 40px;
+    margin-bottom: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .option-name p {
+    font-size: 1rem;
+    margin: 0;
+    /* color: #A6413C; */
+  }
+  
+  .close-button {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .parking-options {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 35px;
+    box-shadow: 1px 1px 3px #cfcfcf;
+    color: #b9a4ce;
+  }
+  
+  .parking-options p {
+    font-size: 0.9rem;
+    margin-right: 10px;
+    color: #aaaaaa;
+  }
+  
+  .options-article {
+    width: 65%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .option {
+    width: 35px;
+    max-height: 50px;
+    margin: 0;
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+  #houred-parking {
+    height: 50px;
+  }
+  
+  #parking-meter {
+    height: 50px;
+  }
+  
+  #wings {
+    width: 50px;
+  }
+  
+  #no-spot {
+    width: 50px;
   }
   
 }

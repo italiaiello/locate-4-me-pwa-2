@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Map from '../../components/Map/Map'
 import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
 import Logout from '../../assets/icons/logout.svg'
-import LocationSpinner from '../../assets/images/location-spinner.svg'
+import MapSplashPage from '../MapSplashPage/MapSplashPage'
 
 const MapContainer = ({ onRouteChange }) => {
 
@@ -27,7 +27,6 @@ const MapContainer = ({ onRouteChange }) => {
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
             timeout: 5000
         })
-
 
     }, [])
 
@@ -76,52 +75,55 @@ const MapContainer = ({ onRouteChange }) => {
 
     return (
         <section className="map-container">
-            <article className="map-heading-logout-container">
-                <h2 className="map-heading">Parking Spots Near You</h2>
-                <div className="logout" onClick={() => onRouteChange('start')}>
-                    <figure className="logout-figure">
-                        <img src={Logout} alt="Log out" className="responsive-img" />
-                    </figure>
-                </div>
-            </article>
             {
-                locationError !== null ?
-                <Map 
-                    location={defaultLocation}
-                    isLocationAllowed={false}
-                    zoomLevel={17} 
-                    showOrangePins={showOrangePins} 
-                    showPurplePins={showPurplePins} 
-                    showBluePins={showBluePins} 
-                    showRedPins={showRedPins} 
-                />
+                currentLocation === null ?
+                <MapSplashPage />
                 :
-                (
-                    currentLocation !== null ?
-                    <Map 
-                        location={currentLocation} 
-                        isLocationAllowed={true}
-                        zoomLevel={17} 
-                        showOrangePins={showOrangePins} 
-                        showPurplePins={showPurplePins} 
-                        showBluePins={showBluePins} 
-                        showRedPins={showRedPins} 
-                    />
-                    :
-                    <article className="location-spinner-container">
-                        <figure className="location-spinner">
-                            <img src={LocationSpinner} alt="Location Spinner" className="responsive-img" />
-                        </figure>
+                <>
+                    <article className="map-heading-logout-container">
+                        <h2 className="map-heading">Parking Spots Near You</h2>
+                        <div className="logout" onClick={() => onRouteChange('start')}>
+                            <figure className="logout-figure">
+                                <img src={Logout} alt="Log out" className="responsive-img" />
+                            </figure>
+                        </div>
                     </article>
-                )
+                    {
+                        locationError !== null ?
+                        <Map 
+                            location={defaultLocation}
+                            isLocationAllowed={false}
+                            zoomLevel={17} 
+                            showOrangePins={showOrangePins} 
+                            showPurplePins={showPurplePins} 
+                            showBluePins={showBluePins} 
+                            showRedPins={showRedPins} 
+                        />
+                        :
+                        (
+                            currentLocation !== null ?
+                            <Map 
+                                location={currentLocation} 
+                                isLocationAllowed={true}
+                                zoomLevel={17} 
+                                showOrangePins={showOrangePins} 
+                                showPurplePins={showPurplePins} 
+                                showBluePins={showBluePins} 
+                                showRedPins={showRedPins} 
+                            />
+                            :
+                            <MapSplashPage />
+                        )
+                    }
+                    <ParkingOptions 
+                        onOptionSelect={onOptionSelect} 
+                        setShowOrangePins={setShowOrangePins}
+                        setShowPurplePins={setShowPurplePins}
+                        setShowBluePins={setShowBluePins}
+                        setShowRedPins={setShowRedPins}
+                    />
+                </>
             }
-            <ParkingOptions 
-                onOptionSelect={onOptionSelect} 
-                setShowOrangePins={setShowOrangePins}
-                setShowPurplePins={setShowPurplePins}
-                setShowBluePins={setShowBluePins}
-                setShowRedPins={setShowRedPins}
-            />
         </section>
     )
 }

@@ -17,21 +17,19 @@ const ParkingOptions = ({ onOptionSelect, setShowOrangePins, setShowPurplePins, 
     return (
         <section className="parking-options-container">
             {
-                optionName ?
+                optionName &&
                 <article className="option-name">
                     <p>{optionName}</p>
                     <figure className="close-button" onClick={() => setOptionName(null)}>
                         <img src={Close} alt="Close button" className="responsive-img" />
                     </figure>
                 </article>
-                :
-                null
             }
             <section className="parking-options">
                 <p>Filter:</p>
                 <article className="options-article">
                     <figure className="option option-selected" data-id={0} data-name={"Houred Parking"} onClick={handleOption}>
-                        <img src={HouredParking} alt="Houred Parking" data-id={0} data-name={"Houred Parking"} className="responsive-img" />
+                        <img src={HouredParking} alt="Houred Parking" data-id={0} data-name={"Houred Parking"} id="houred-parking" className="responsive-img" />
                     </figure>
                     <figure className="option option-selected" data-id={1} data-name={"Paid Parking"} onClick={handleOption}>
                         <img src={PaidParking} alt="Parking Meter" data-id={1} data-name={"Paid Parking"} id="parking-meter" className="responsive-img" />

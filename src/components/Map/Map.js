@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
 import LocationPinAndTooltip from '../LocationPinAndTooltip/LocationPinAndTooltip'
 import { MapStyles } from './MapStyles'
@@ -11,9 +11,7 @@ const Map = ({ location, isLocationAllowed, zoomLevel, showOrangePins, showPurpl
 
   return (
     <section className="map">
-
       <div className="google-map">
-        
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyCmAUJKgiUiXeKCak2rE-UIqzwNFAFuPmM' }}
           defaultCenter={location}

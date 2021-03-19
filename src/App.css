@@ -180,14 +180,14 @@ h1 {
 
 .map-heading-logout-container {
   width: 70%;
-  height: 100px;
+  height: 160px;
   position: absolute;
   top: 10px;
   z-index: 99;
   left: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-start;
 }
 
@@ -201,12 +201,46 @@ h1 {
   font-size: 1rem;
 }
 
+.address-bar-container {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  box-shadow: 1px 1px 3px #cfcfcf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.address-bar {
+  width: 85%;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: #6E33A6;
+}
+
+.address-bar::placeholder {
+  color: #6e33a68f
+}
+
+#addressBar::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.clear-search-button {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
 .logout {
   background-color: white;
   border-radius: 30px;
   width: 35px;
-  height: 80px;
-  margin-top: 10px;
+  height: 35px;
   box-shadow: 1px 1px 3px #cfcfcf;
   display: flex;
   justify-content: center;
@@ -490,6 +524,10 @@ h1 {
 
   .google-map {
     height: 100%;
+  }
+
+  .address-bar {
+    width: 30%;
   }
 
   /* Map Splash Page */

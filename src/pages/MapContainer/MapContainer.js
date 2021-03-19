@@ -3,11 +3,15 @@ import Map from '../../components/Map/Map'
 import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
 import Logout from '../../assets/icons/logout.svg'
 import MapSplashPage from '../MapSplashPage/MapSplashPage'
+import Close from '../../assets/icons/close.svg'
 
 const MapContainer = ({ onRouteChange }) => {
 
     const [currentLocation, setCurrentLocation] = useState(null)
     const [locationError, setLocationError] = useState(null)
+
+    const [address, setAddress] = useState("")
+    const [showClearSearchIcon, setShowClearSearchIcon] = useState(false)
 
     useEffect(() => {
         const successCallback = (position) => {
@@ -21,6 +25,7 @@ const MapContainer = ({ onRouteChange }) => {
 
         const errorCallback = (error) => {
             setLocationError(error.message)
+            setCurrentLocation("none")
             console.error(error)
         }
 
@@ -29,6 +34,16 @@ const MapContainer = ({ onRouteChange }) => {
         })
 
     }, [])
+
+    // Triggering event for addressfinder to work
+
+    useEffect(() => {
+        if (currentLocation !== null) {
+            const DOMContentLoaded_event = document.createEvent("Event")
+            DOMContentLoaded_event.initEvent("DOMContentLoaded", true, true)
+            window.document.dispatchEvent(DOMContentLoaded_event)
+        }
+      }, [currentLocation])
 
     const [showOrangePins, setShowOrangePins] = useState(true)
     const [showPurplePins, setShowPurplePins] = useState(true)
@@ -40,6 +55,20 @@ const MapContainer = ({ onRouteChange }) => {
         address: '1 Anderson St, Chatswood NSW 2067',
         lat: -33.7971,
         lng: 151.1836,
+    }
+
+    const onAddressChange = (e) => {
+        setAddress(e.target.value)
+        if (address.length) {
+            setShowClearSearchIcon(true)
+        } else {
+            setShowClearSearchIcon(false)
+        }
+    }
+
+    const clearAddress = () => {
+        setAddress("")
+        setShowClearSearchIcon(false)
     }
 
 
@@ -82,6 +111,15 @@ const MapContainer = ({ onRouteChange }) => {
                 <>
                     <article className="map-heading-logout-container">
                         <h2 className="map-heading">Parking Spots Near You</h2>
+                        <div className="address-bar-container">
+                            <input id="addressBar" type="text" className="address-bar" placeholder="Search address..." value={address} onChange={onAddressChange} />
+                            {
+                                showClearSearchIcon &&
+                                <figure className="clear-search-button" onClick={clearAddress}>
+                                    <img src={Close} alt="Clear search bar" className="responsive-img" />
+                                </figure>
+                            }
+                        </div>
                         <div className="logout" onClick={() => onRouteChange('start')}>
                             <figure className="logout-figure">
                                 <img src={Logout} alt="Log out" className="responsive-img" />

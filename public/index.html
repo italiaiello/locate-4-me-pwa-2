@@ -75,6 +75,8 @@
         );
 
         widget.on('address:select', function(fullAddress, metaData) {
+            window.sessionStorage.setItem("address", JSON.stringify(metaData))
+            document.getElementById("address-bar-container").dataset.address = metaData
             document.getElementById('addressBar').value = metaData.full_address
 
         });

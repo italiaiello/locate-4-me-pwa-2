@@ -111,7 +111,7 @@ const MapContainer = ({ onRouteChange }) => {
                 <>
                     <article className="map-heading-logout-container">
                         <h2 className="map-heading">Parking Spots Near You</h2>
-                        <div className="address-bar-container">
+                        <div className="address-bar-container" data-address={"Nothning"}>
                             <input id="addressBar" type="text" className="address-bar" placeholder="Search address..." value={address} onChange={onAddressChange} />
                             {
                                 showClearSearchIcon &&

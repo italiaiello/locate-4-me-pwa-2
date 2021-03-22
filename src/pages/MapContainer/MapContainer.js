@@ -4,11 +4,14 @@ import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
 import Logout from '../../assets/icons/logout.svg'
 import MapSplashPage from '../MapSplashPage/MapSplashPage'
 import Close from '../../assets/icons/close.svg'
+import Search from '../../assets/icons/search.svg'
 
 const MapContainer = ({ onRouteChange }) => {
 
     const [currentLocation, setCurrentLocation] = useState(null)
     const [locationError, setLocationError] = useState(null)
+
+    const [storageAddress, setStorageAddress] = useState(null)
 
     const [address, setAddress] = useState("")
     const [showClearSearchIcon, setShowClearSearchIcon] = useState(false)
@@ -42,6 +45,12 @@ const MapContainer = ({ onRouteChange }) => {
             const DOMContentLoaded_event = document.createEvent("Event")
             DOMContentLoaded_event.initEvent("DOMContentLoaded", true, true)
             window.document.dispatchEvent(DOMContentLoaded_event)
+            window.addEventListener("storage", () => {
+                if (window.sessionStorage.address) {
+                    console.log("FOUND IT")
+                    setStorageAddress(window.sessionStorage.address)
+                }
+            })
         }
       }, [currentLocation])
 
@@ -102,6 +111,10 @@ const MapContainer = ({ onRouteChange }) => {
 
     }
 
+    const onSearch = () => {
+        console.log(window.sessionStorage.address)
+    }
+
     return (
         <section className="map-container">
             {
@@ -111,14 +124,19 @@ const MapContainer = ({ onRouteChange }) => {
                 <>
                     <article className="map-heading-logout-container">
                         <h2 className="map-heading">Parking Spots Near You</h2>
-                        <div className="address-bar-container" data-address={"Nothning"}>
-                            <input id="addressBar" type="text" className="address-bar" placeholder="Search address..." value={address} onChange={onAddressChange} />
-                            {
-                                showClearSearchIcon &&
-                                <figure className="clear-search-button" onClick={clearAddress}>
-                                    <img src={Close} alt="Clear search bar" className="responsive-img" />
-                                </figure>
-                            }
+                        <div className="address-bar-and-search-button" data-address={"Nothing"}>
+                            <div className="address-bar-container">
+                                <input id="addressBar" type="text" className="address-bar" placeholder="Search address..." value={address} onChange={onAddressChange} />
+                                {
+                                    showClearSearchIcon &&
+                                    <figure className="clear-search-button" onClick={clearAddress}>
+                                        <img src={Close} alt="Clear search bar" className="responsive-img" />
+                                    </figure>
+                                }
+                            </div>
+                            <figure className="search-button" onClick={onSearch}>
+                                <img src={Search} alt="Search" className="responsive-img" />
+                            </figure>
                         </div>
                         <div className="logout" onClick={() => onRouteChange('start')}>
                             <figure className="logout-figure">

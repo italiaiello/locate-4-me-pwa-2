@@ -16,9 +16,11 @@ const MapContainer = ({ onRouteChange }) => {
     const [address, setAddress] = useState("")
     const [showClearSearchIcon, setShowClearSearchIcon] = useState(false)
 
+    const [searchedLocation, setSearchedLoaction] = useState(null)
+    const [showSearchedLocation, setShowSearchedLocation] = useState(false)
+
     useEffect(() => {
         const successCallback = (position) => {
-            console.log(position)
             setCurrentLocation({
                 address: "Your Current Location",
                 lat: position.coords.latitude,
@@ -45,12 +47,6 @@ const MapContainer = ({ onRouteChange }) => {
             const DOMContentLoaded_event = document.createEvent("Event")
             DOMContentLoaded_event.initEvent("DOMContentLoaded", true, true)
             window.document.dispatchEvent(DOMContentLoaded_event)
-            window.addEventListener("storage", () => {
-                if (window.sessionStorage.address) {
-                    console.log("FOUND IT")
-                    setStorageAddress(window.sessionStorage.address)
-                }
-            })
         }
       }, [currentLocation])
 
@@ -108,11 +104,18 @@ const MapContainer = ({ onRouteChange }) => {
         } else {
             options[index].classList.add('option-selected')
         }
-
     }
 
     const onSearch = () => {
-        console.log(window.sessionStorage.address)
+        const addressFromStorage = JSON.parse(window.sessionStorage.getItem("address"))
+        setAddress(addressFromStorage.full_address)
+        setSearchedLoaction({
+            address: addressFromStorage.full_address,
+            lat: addressFromStorage.latitude,
+            lon: addressFromStorage.longitude
+        })
+        setShowSearchedLocation(true)
+        setStorageAddress(addressFromStorage)
     }
 
     return (
@@ -149,6 +152,7 @@ const MapContainer = ({ onRouteChange }) => {
                         <Map 
                             location={defaultLocation}
                             isLocationAllowed={false}
+                            storageAddress={storageAddress}
                             zoomLevel={17} 
                             showOrangePins={showOrangePins} 
                             showPurplePins={showPurplePins} 
@@ -161,6 +165,7 @@ const MapContainer = ({ onRouteChange }) => {
                             <Map 
                                 location={currentLocation} 
                                 isLocationAllowed={true}
+                                storageAddress={storageAddress}
                                 zoomLevel={17} 
                                 showOrangePins={showOrangePins} 
                                 showPurplePins={showPurplePins} 

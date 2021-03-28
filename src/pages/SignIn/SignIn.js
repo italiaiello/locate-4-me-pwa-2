@@ -35,7 +35,6 @@ const SignIn = ({ onRouteChange }) => {
         try {
             setIsSigningIn(true)
             const response = await signin(email, password);
-            console.log(response)
             onRouteChange('home')
             setIsSigningIn(false)
         } catch (error) {

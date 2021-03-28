@@ -58,7 +58,6 @@ const Register = ({ onRouteChange }) => {
         try {
             setIsRegistering(true)
             const response = await register(email, password);
-            console.log(response)
             setIsRegistering(false)
             onRouteChange('home')
         } catch (error) {

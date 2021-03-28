@@ -10,7 +10,7 @@ import Logo from "./assets/images/logo192.png";
 
 function App() {
 
-  const [route, setRoute] = useState('start')
+  const [route, setRoute] = useState('home')
 
   const onRouteChange = (newRoute) => setRoute(newRoute) 
 

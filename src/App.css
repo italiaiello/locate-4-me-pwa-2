@@ -28,7 +28,7 @@ h1 {
 }
 
 .responsive-img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -176,11 +176,48 @@ h1 {
   width: 44%;
 }
 
+/* NavBar */
+
+.navbar {
+  position: absolute;
+  background-color: #6E33A6;
+  z-index: 2;
+  width: 100%;
+}
+
+.navbar-header {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-menu-greeting {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+}
+
+/* Expanded Menu Arrow */
+
+.menu-arrow {
+  width: 25px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Map Container */
+
+.map-container {
+  position: relative
+}
 
 .map-heading-logout-container {
   width: 75%;
-  height: 160px;
+  height: 100px;
   position: absolute;
   top: 10px;
   z-index: 99;
@@ -191,34 +228,41 @@ h1 {
   align-items: flex-start;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  padding-left: 5px;
+}
+
 .map-heading {
   color: #6E33A6;
-  background-color: white;
   padding: 10px 20px;
-  box-shadow: 1px 1px 3px #cfcfcf;
   border-radius: 20px;
   margin: 0;
   font-size: 1rem;
+  background-color: white;
+
 }
 
 .address-bar-and-search-button {
-  width: 100%;
+  width: 90%;
+  padding: 0 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin: 20px 0;
 }
 
 .address-bar-container {
-  width: 70%;
-  padding: 15px;
+  width: 100%;
   border: none;
-  border-radius: 30px;
   outline: none;
-  box-shadow: 1px 1px 3px #cfcfcf;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  border-bottom: 1px solid white;
 }
 
 .address-bar {
@@ -226,11 +270,13 @@ h1 {
   height: 100%;
   border: none;
   outline: none;
-  color: #6E33A6;
+  color: white;
+  background: none;
+  padding: 10px;
 }
 
 .address-bar::placeholder {
-  color: #6e33a68f
+  color: #ffffff8f
 }
 
 #addressBar::-webkit-search-cancel-button {
@@ -247,15 +293,12 @@ h1 {
   width: 20px;
   margin: 0;
   margin-left: 10px;
-  background-color: white;
   width: 35px;
   height: 35px;
   padding: 5px;
-  border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 1px 1px 3px #cfcfcf;
   cursor: pointer;
 }
 
@@ -298,6 +341,37 @@ h1 {
   align-items: center;
 }
 
+/* Parking Buttons */
+
+.parking-btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.street-parking-btn, .secure-parking-btn {
+  width: 35%;
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 2px solid #6E33A6;
+  color: white;
+}
+
+hr {
+  border: 1px solid #371359;
+  height: 50px;
+  margin: 0;
+}
+
+.active {
+  border: 2px solid #371359;
+  background-color: #371359;
+  color: white
+}
+
 /* Map Splash Page */
 
 .splash-page {
@@ -322,6 +396,21 @@ h1 {
   width: 100%;
   font-size: 1.2rem;
   color: #6E33A6;
+}
+
+/* Menu */
+
+.menu {
+  width: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.menu-button {
+  margin: 0;
 }
 
 /* Location Pin and Tooltip */

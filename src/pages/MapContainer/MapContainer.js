@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Map from '../../components/Map/Map'
 import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
-import Logout from '../../assets/icons/logout.svg'
 import MapSplashPage from '../MapSplashPage/MapSplashPage'
-import Close from '../../assets/icons/close.svg'
-import Search from '../../assets/icons/search.svg'
+import NavBar from '../../components/NavBar/NavBar'
 
 const MapContainer = ({ onRouteChange }) => {
 
@@ -40,15 +38,7 @@ const MapContainer = ({ onRouteChange }) => {
 
     }, [])
 
-    // Triggering event for addressfinder to work
-
-    useEffect(() => {
-        if (currentLocation !== null) {
-            const DOMContentLoaded_event = document.createEvent("Event")
-            DOMContentLoaded_event.initEvent("DOMContentLoaded", true, true)
-            window.document.dispatchEvent(DOMContentLoaded_event)
-        }
-      }, [currentLocation])
+    
 
     const [showOrangePins, setShowOrangePins] = useState(true)
     const [showPurplePins, setShowPurplePins] = useState(true)
@@ -125,28 +115,13 @@ const MapContainer = ({ onRouteChange }) => {
                 <MapSplashPage />
                 :
                 <>
-                    <article className="map-heading-logout-container">
-                        <h2 className="map-heading">Parking Spots Near You</h2>
-                        <div className="address-bar-and-search-button" data-address={"Nothing"}>
-                            <div className="address-bar-container">
-                                <input id="addressBar" type="text" className="address-bar" placeholder="Search address..." value={address} onChange={onAddressChange} />
-                                {
-                                    showClearSearchIcon &&
-                                    <figure className="clear-search-button" onClick={clearAddress}>
-                                        <img src={Close} alt="Clear search bar" className="responsive-img" />
-                                    </figure>
-                                }
-                            </div>
-                            <figure className="search-button" onClick={onSearch}>
-                                <img src={Search} alt="Search" className="responsive-img" />
-                            </figure>
-                        </div>
-                        <div className="logout" onClick={() => onRouteChange('start')}>
-                            <figure className="logout-figure">
-                                <img src={Logout} alt="Log out" className="responsive-img" />
-                            </figure>
-                        </div>
-                    </article>
+                    <NavBar 
+                        onSearch={onSearch} 
+                        clearAddress={clearAddress} 
+                        address={address} 
+                        onAddressChange={onAddressChange} 
+                        showClearSearchIcon={showClearSearchIcon} 
+                    />
                     {
                         locationError !== null ?
                         <Map 

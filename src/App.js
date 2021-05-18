@@ -15,11 +15,13 @@ function App() {
   const onRouteChange = (newRoute) => setRoute(newRoute) 
   const [value1, setValue1] = useState(0)
 
+  console.log("Value from database", value1)
+
   useEffect(() => {
     const getValue = db.ref("sensor1");
     getValue.on("value", snapshot => {
       let value = snapshot.val();
-      if(value == 1 && value1 == 0){
+      if(value == 1){
         pins[0] = {
           lat: -33.7971,
             lng: 151.1836,
@@ -29,7 +31,7 @@ function App() {
             address: '1 Anderson St, Chatswood NSW 2067',
       }
       }
-      else if(value == 0 && value1 == 1){
+      else if(value == 0){
         pins[0] = {
           lat: -33.7971,
             lng: 151.1836,
@@ -39,7 +41,6 @@ function App() {
             address: '1 Anderson St, Chatswood NSW 2067',
       }
       }
-      console.log("Value from database", value)
       setValue1(value)
     });
   }, []);

@@ -39,6 +39,7 @@ function App() {
             address: '1 Anderson St, Chatswood NSW 2067',
       }
       }
+      console.log("Value from database", value)
       setValue1(value)
     });
   }, []);

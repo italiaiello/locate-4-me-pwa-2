@@ -14,9 +14,7 @@ function App() {
   const [route, setRoute] = useState('start')
   const onRouteChange = (newRoute) => setRoute(newRoute) 
   const [value1, setValue1] = useState(0)
-
-  console.log("Value from database", value1)
-
+  
   useEffect(() => {
     const getValue = db.ref("sensor1");
     getValue.on("value", snapshot => {

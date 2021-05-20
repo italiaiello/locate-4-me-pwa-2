@@ -5,7 +5,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import ParkingButtons from '../ParkingButtons/ParkingButtons'
 
 
-const NavBar = ({ onSearch, clearAddress, address, onAddressChange, showClearSearchIcon, currentLocation }) => {
+const NavBar = ({ onSearch, clearAddress, address, onAddressChange, showClearSearchIcon, currentLocation, onRouteChange }) => {
 
     const [isMenuExpanded, setIsMenuExpanded] = useState(false)
     
@@ -17,7 +17,7 @@ const NavBar = ({ onSearch, clearAddress, address, onAddressChange, showClearSea
                 !isMenuExpanded ?
                 <article className="navbar-header">
                     <article className="navbar-menu-greeting">
-                        <Menu />   
+                        <Menu onRouteChange={onRouteChange} />   
                         <p>Good morning, James</p>
                     </article>
                     <ExpandMenuArrow isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} />
@@ -26,7 +26,7 @@ const NavBar = ({ onSearch, clearAddress, address, onAddressChange, showClearSea
                 <>
                     <article className="navbar-header">
                         <article className="navbar-menu-greeting">
-                            <Menu />   
+                            <Menu onRouteChange={onRouteChange} />   
                             <p>Good morning, James</p>
                         </article>
                         <ExpandMenuArrow isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} />

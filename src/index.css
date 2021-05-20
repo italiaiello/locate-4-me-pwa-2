@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "BankGothic";
+  src: local("BankGothic"),
+   url("./fonts/BankGothic/BankGothic-Regular.ttf") format("truetype");
+ }

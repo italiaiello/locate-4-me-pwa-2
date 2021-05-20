@@ -121,6 +121,7 @@ const MapContainer = ({ onRouteChange }) => {
                         address={address} 
                         onAddressChange={onAddressChange} 
                         showClearSearchIcon={showClearSearchIcon} 
+                        onRouteChange={onRouteChange}
                     />
                     {
                         locationError !== null ?

@@ -3,7 +3,7 @@
 }
 
 h1, h2, h3, h4, button, .logo-text, .author-text, button, .parking-options {
-  font-family: BankGothic;
+  font-family: "BankGothic";
 }
 
 p {
@@ -306,34 +306,6 @@ h1 {
   width: 80%;
 }
 
-.logout {
-  background-color: white;
-  border-radius: 30px;
-  width: 35px;
-  height: 35px;
-  box-shadow: 1px 1px 3px #cfcfcf;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.logout:active {
-  opacity: 0.8;
-}
-
-.logout-figure {
-  width: 25px;
-  height: 25px;
-  margin: 0;
-}
-
-.logout-figure .responsive-img {
-  height: 100%;
-  width: auto;
-}
-
 .location-spinner-container {
   height: 100vh;
   display: flex;
@@ -411,6 +383,51 @@ hr {
 
 .menu-button {
   margin: 0;
+}
+
+.menu-large {
+  position: absolute;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color: #6E33A6;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-large-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-large-icon:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.menu-large-figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+
+.logout:active {
+  opacity: 0.8;
+}
+
+.menu-large .menu-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
 }
 
 /* Location Pin and Tooltip */

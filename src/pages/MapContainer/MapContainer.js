@@ -45,6 +45,9 @@ const MapContainer = ({ onRouteChange }) => {
     const [showBluePins, setShowBluePins] = useState(true)
     const [showRedPins, setShowRedPins] = useState(true)
 
+    // Toggles between viewing street and secure parking
+    const [showSecureParking, setShowSecureParkingPins] = useState(false)
+
     // If user denies access to location, or an error occurs, the map can fallback on this location
     const defaultLocation = {
         address: '1 Anderson St, Chatswood NSW 2067',
@@ -122,6 +125,7 @@ const MapContainer = ({ onRouteChange }) => {
                         onAddressChange={onAddressChange} 
                         showClearSearchIcon={showClearSearchIcon} 
                         onRouteChange={onRouteChange}
+                        setShowSecureParkingPins={setShowSecureParkingPins}
                     />
                     {
                         locationError !== null ?
@@ -133,7 +137,9 @@ const MapContainer = ({ onRouteChange }) => {
                             showOrangePins={showOrangePins} 
                             showPurplePins={showPurplePins} 
                             showBluePins={showBluePins} 
-                            showRedPins={showRedPins} 
+                            showRedPins={showRedPins}
+                            showSecureParking={showSecureParking}
+                            setShowSecureParkingPins={setShowSecureParkingPins}
                         />
                         :
                         (
@@ -147,6 +153,8 @@ const MapContainer = ({ onRouteChange }) => {
                                 showPurplePins={showPurplePins} 
                                 showBluePins={showBluePins} 
                                 showRedPins={showRedPins} 
+                                showSecureParking={showSecureParking}
+                                setShowSecureParkingPins={setShowSecureParkingPins}
                             />
                             :
                             <MapSplashPage />
@@ -159,6 +167,7 @@ const MapContainer = ({ onRouteChange }) => {
                         setShowBluePins={setShowBluePins}
                         setShowRedPins={setShowRedPins}
                     />
+                    
                 </>
             }
         </section>

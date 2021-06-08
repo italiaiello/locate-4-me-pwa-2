@@ -4,10 +4,11 @@ import LocationPinAndTooltip from '../LocationPinAndTooltip/LocationPinAndToolti
 import { MapStyles } from './MapStyles'
 import './Map.css'
 import { pins } from '../../Pins/Pins'
+import { newpins } from '../../Pins/NewPins'
 import { getPinColor } from '../../functions/getPinColor'
 import { renderPins } from '../../functions/renderPins'
 
-const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrangePins, showPurplePins, showBluePins, showRedPins }) => {
+const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrangePins, showPurplePins, showBluePins, showRedPins, showSecureParking }) => {
 
   const [searchedLocation, setSearchedLoaction] = useState(null)
 
@@ -21,6 +22,18 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
     }
   }, [storageAddress])
 
+  const [newPins, setNewPins] = useState([])
+  
+  useEffect(() => {
+    if (showSecureParking) {
+      setNewPins(newpins)
+    } else {
+      setNewPins(pins)
+    }
+  }, [showSecureParking])
+
+  console.log(newPins)
+
   return (
     <section className="map">
       <div className="google-map">
@@ -32,9 +45,8 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
           defaultZoom={zoomLevel}
           options={{ styles: MapStyles }}
           >
-            {
-              
-              pins.map((pin, index) => {
+            {     
+              newPins.map((pin, index) => {
                 const pinColor = getPinColor(pin.type)
                 return (
                   renderPins(pin.type, showOrangePins, showPurplePins, showBluePins, showRedPins) 
@@ -102,7 +114,7 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
           >
             {
 
-              pins.map((pin, index) => {
+              newPins.map((pin, index) => {
                 const pinColor = getPinColor(pin.type)
                 return (
                   renderPins(pin.type, showOrangePins, showPurplePins, showBluePins, showRedPins) 

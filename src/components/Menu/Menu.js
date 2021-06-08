@@ -15,7 +15,7 @@ const Menu = ({ onRouteChange }) => {
                     <figure className="menu-button">
                         <img src={MenuButton} alt="Menu button" className="responsive-img" />
                     </figure>
-                    <div className="menu-large-icon" onClick={() => onRouteChange('start')}>
+                    <div className="menu-large-icon">
                         <figure className="menu-large-figure">
                             <img src={Settings} alt="Settings" className="responsive-img" />
                         </figure>

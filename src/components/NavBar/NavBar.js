@@ -5,11 +5,9 @@ import SearchBar from '../SearchBar/SearchBar'
 import ParkingButtons from '../ParkingButtons/ParkingButtons'
 
 
-const NavBar = ({ onSearch, clearAddress, address, onAddressChange, showClearSearchIcon, currentLocation, onRouteChange }) => {
+const NavBar = ({ onSearch, clearAddress, address, onAddressChange, showClearSearchIcon, currentLocation, onRouteChange, setShowSecureParkingPins }) => {
 
-    const [isMenuExpanded, setIsMenuExpanded] = useState(false)
-    
-    
+    const [isMenuExpanded, setIsMenuExpanded] = useState(false)    
 
     return (
         <section className="navbar">
@@ -39,7 +37,7 @@ const NavBar = ({ onSearch, clearAddress, address, onAddressChange, showClearSea
                         showClearSearchIcon={showClearSearchIcon} 
                         currentLocation={currentLocation}
                     />
-                    <ParkingButtons />
+                    <ParkingButtons setShowSecureParkingPins={setShowSecureParkingPins} />
                 </>
             }
         </section>

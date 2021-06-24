@@ -1,4 +1,4 @@
-export const getPinColor = (type) => {
+export const getPin = (type) => {
     switch(type) {
         case '1 Hour Parking':
         case '2 Hour Parking':
@@ -11,6 +11,8 @@ export const getPinColor = (type) => {
             return 'blue'
         case 'Spot Taken':
             return 'red'
+        case 'Current Location':
+            return 'location'
         default:
             return <>Invalid Type</>
     }

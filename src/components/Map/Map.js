@@ -5,7 +5,7 @@ import { MapStyles } from './MapStyles'
 import './Map.css'
 import { pins } from '../../Pins/Pins'
 import { newpins } from '../../Pins/NewPins'
-import { getPinColor } from '../../functions/getPinColor'
+import { getPin } from '../../functions/getPin'
 import { renderPins } from '../../functions/renderPins'
 
 const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrangePins, showPurplePins, showBluePins, showRedPins, showSecureParking }) => {
@@ -47,7 +47,7 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
           >
             {     
               newPins.map((pin, index) => {
-                const pinColor = getPinColor(pin.type)
+                const pinType = getPin(pin.type)
                 return (
                   renderPins(pin.type, showOrangePins, showPurplePins, showBluePins, showRedPins) 
                   ?
@@ -59,11 +59,7 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
                   hours={pin.hours} 
                   days={pin.days}
                   address={pin.address}
-                  pinColor={pinColor}
-                  showOrangePins={showOrangePins}
-                  showPurplePins={showPurplePins}
-                  showBluePin={showBluePins}
-                  showRedPins={showRedPins}
+                  pinType={pinType}
                   />
                   :
                   null
@@ -79,11 +75,7 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
                 hours={"N/A"} 
                 days={"N/A"}
                 address={"Your Current Location"}
-                pinColor={"blue"}
-                showOrangePins={showOrangePins}
-                showPurplePins={showPurplePins}
-                showBluePin={showBluePins}
-                showRedPins={showRedPins}
+                pinType={"blue"}
               />
               :
               null
@@ -97,11 +89,7 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
                 hours={"N/A"} 
                 days={"N/A"}
                 address={storageAddress.full_address}
-                pinColor={"blue"}
-                showOrangePins={showOrangePins}
-                showPurplePins={showPurplePins}
-                showBluePin={showBluePins}
-                showRedPins={showRedPins}
+                pinType={"blue"}
               />
             }
           </GoogleMapReact>
@@ -115,10 +103,10 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
             {
 
               newPins.map((pin, index) => {
-                const pinColor = getPinColor(pin.type)
+                const pinType = getPin(pin.type)
                 return (
                   renderPins(pin.type, showOrangePins, showPurplePins, showBluePins, showRedPins) 
-                  ?
+                  &&
                   <LocationPinAndTooltip
                     key={`pin${index}`}
                     lat={pin.lat} 
@@ -127,19 +115,13 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
                     hours={pin.hours} 
                     days={pin.days}
                     address={pin.address}
-                    pinColor={pinColor}
-                    showOrangePins={showOrangePins}
-                    showPurplePins={showPurplePins}
-                    showBluePin={showBluePins}
-                    showRedPins={showRedPins}
+                    pinType={pinType}
                   />
-                  :
-                  null
                 )
               })
             }
             {
-              isLocationAllowed ?
+              isLocationAllowed &&
               <LocationPinAndTooltip
                 lat={location.lat} 
                 lng={location.lng} 
@@ -147,14 +129,8 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
                 hours={"N/A"} 
                 days={"N/A"}
                 address={"Your Current Location"}
-                pinColor={"blue"}
-                showOrangePins={showOrangePins}
-                showPurplePins={showPurplePins}
-                showBluePin={showBluePins}
-                showRedPins={showRedPins}
+                pinType={"location"}
               />
-              :
-              null
             }
             {
               storageAddress !== null &&
@@ -165,11 +141,7 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
                 hours={"N/A"} 
                 days={"N/A"}
                 address={storageAddress.full_address}
-                pinColor={"blue"}
-                showOrangePins={showOrangePins}
-                showPurplePins={showPurplePins}
-                showBluePin={showBluePins}
-                showRedPins={showRedPins}
+                pinType={"blue"}
               />
             }
           </GoogleMapReact>

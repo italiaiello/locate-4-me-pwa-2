@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LocationPin from '../LocationPin/LocationPin'
 import Tooltip from '../Tooltip/Tooltip'
 
-const LocationPinAndTooltip = ({ lat, lng, type, hours, days, address, pinColor, showOrangePins, showPurplePins, showBluePins, showRedPins }) => {
+const LocationPinAndTooltip = ({ lat, lng, type, hours, days, address, pinType }) => {
 
     const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
@@ -10,7 +10,7 @@ const LocationPinAndTooltip = ({ lat, lng, type, hours, days, address, pinColor,
 
     return (
         <article className="location-tooltip" onClick={toggleTooltip}>
-            <LocationPin lat={lat} lng={lng} pinColor={pinColor} />
+            <LocationPin lat={lat} lng={lng} pinType={pinType} />
             {
                 isTooltipVisible ?
                 <Tooltip 
@@ -18,7 +18,7 @@ const LocationPinAndTooltip = ({ lat, lng, type, hours, days, address, pinColor,
                     hours={hours} 
                     days={days} 
                     address={address} 
-                    pinColor={pinColor} 
+                    pinType={pinType} 
                 />
                 :
                 null

@@ -455,6 +455,16 @@ hr {
   color: #F61000;
 }
 
+.location-pin {
+  width: 50px;
+  height: auto;
+}
+
+#responsive-location-pin {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Tooltip */
 
 .tooltip {
@@ -491,6 +501,10 @@ hr {
 
 .red {
   background-color: #F61000;
+}
+
+.location {
+  background-color: #0070D7;
 }
 
 /* Parking Options */

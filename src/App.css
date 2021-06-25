@@ -514,11 +514,10 @@ hr {
 }
 
 .parking-options-container {
-  width: 80%;
+  width: 100%;
   height: auto;
   position: absolute;
-  bottom: 40px;
-  left: 12px;
+  bottom: 0px;
 }
 
 .option-name {
@@ -553,9 +552,9 @@ hr {
   justify-content: center;
   align-items: center;
   background-color: white;
-  border-radius: 30px;
-  box-shadow: 1px 1px 3px #cfcfcf;
+  box-shadow: 1px -5px 20px #979797;
   color: #b9a4ce;
+  padding: 10px 0;
 }
 
 .parking-options p {

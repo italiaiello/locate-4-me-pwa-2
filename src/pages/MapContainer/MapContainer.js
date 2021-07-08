@@ -4,7 +4,7 @@ import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
 import MapSplashPage from '../MapSplashPage/MapSplashPage'
 import NavBar from '../../components/NavBar/NavBar'
 
-const MapContainer = ({ onRouteChange }) => {
+const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTransport }) => {
 
     const [currentLocation, setCurrentLocation] = useState(null)
     const [locationError, setLocationError] = useState(null)
@@ -161,11 +161,11 @@ const MapContainer = ({ onRouteChange }) => {
                         )
                     }
                     <ParkingOptions 
-                        onOptionSelect={onOptionSelect} 
-                        setShowOrangePins={setShowOrangePins}
-                        setShowPurplePins={setShowPurplePins}
-                        setShowBluePins={setShowBluePins}
-                        setShowRedPins={setShowRedPins}
+                        onOptionSelect={onOptionSelect}
+                        onRouteChange={onRouteChange}
+                        setOrigin={setOrigin}
+                        setDestination={setDestination}
+                        setModeOfTransport={setModeOfTransport}
                     />
                     
                 </>

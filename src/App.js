@@ -3,6 +3,7 @@ import MapContainer from './pages/MapContainer/MapContainer';
 import Register from './pages/Register/Register';
 import SignIn from './pages/SignIn/SignIn';
 import StartScreen from './pages/StartScreen/StartScreen';
+import ParkingDirections from './pages/ParkingDirections/ParkingDirections';
 import AddToHomescreen from 'react-add-to-homescreen';
 import './App.css';
 import { handleAddToHomeScreen } from './functions/handleAddToHomeScreen';
@@ -11,9 +12,15 @@ import { pins } from './Pins/Pins'
 import { db } from './services/firebase'
 
 function App() {
-  const [route, setRoute] = useState('start')
-  const onRouteChange = (newRoute) => setRoute(newRoute) 
+  const [route, setRoute] = useState('home')
   const [value1, setValue1] = useState(0)
+
+  // Grabs the selections for directions
+  const [origin, setOrigin] = useState(null)
+  const [destination, setDestination] = useState(null)
+  const [modeOfTransport, setModeOfTransport] = useState(null)
+
+  const onRouteChange = (newRoute) => setRoute(newRoute) 
   
   useEffect(() => {
     const getValue = db.ref("sensor1");
@@ -52,7 +59,15 @@ function App() {
       case 'signin':
         return <SignIn onRouteChange={onRouteChange} />
       case 'home':
-        return <MapContainer onRouteChange={onRouteChange} value1={value1} />
+        return <MapContainer 
+          onRouteChange={onRouteChange} 
+          value1={value1}  
+          setOrigin={setOrigin}
+          setDestination={setDestination}
+          setModeOfTransport={setModeOfTransport}
+      />
+      case 'directions':
+        return <ParkingDirections onRouteChange={onRouteChange} origin={origin} destination={destination} modeOfTransport={modeOfTransport} />
       default:
         return <>Invalid route</>
     }

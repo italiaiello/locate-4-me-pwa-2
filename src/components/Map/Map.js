@@ -12,6 +12,8 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
 
   const [searchedLocation, setSearchedLoaction] = useState(null)
 
+  const google = window.google;
+
   useEffect(() => {
     if (storageAddress) {
       setSearchedLoaction({
@@ -34,9 +36,35 @@ const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrang
 
   console.log(newPins)
 
+  // useEffect(() => {
+  //   if (google) {
+  //     const directionsRenderer = new google.maps.DirectionsRenderer();
+  //     const directionsService = new google.maps.DirectionsService();
+  //     const map = new google.maps.Map(document.getElementById("map"), {
+  //       zoom: 14,
+  //       center: { lat: 37.77, lng: -122.447 },
+  //     });
+  //     directionsRenderer.setMap(map);
+  //     calculateAndDisplayRoute(directionsService, directionsRenderer)
+  //   }
+  // }, [google])
+
+  // const calculateAndDisplayRoute = (directionsService, directionsRenderer) => {
+  //   directionsService
+  //   .route({
+  //     origin: "-33.7971, 151.1836",
+  //     destination: "-33.7927011, 151.1853129",
+  //     travelMode: google.maps.TravelMode.DRIVING,
+  //   })
+  //   .then((response) => {
+  //     directionsRenderer.setDirections(response);
+  //   })
+  //   .catch((err) => window.alert("Directions request failed due to " + err.status));
+  // }
+
   return (
     <section className="map">
-      <div className="google-map">
+      <div id="map" className="google-map">
         {
           searchedLocation ?
           <GoogleMapReact

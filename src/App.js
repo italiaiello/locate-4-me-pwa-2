@@ -12,7 +12,7 @@ import { pins } from './Pins/Pins'
 import { db } from './services/firebase'
 
 function App() {
-  const [route, setRoute] = useState('home')
+  const [route, setRoute] = useState('start')
   const [value1, setValue1] = useState(0)
 
   // Grabs the selections for directions

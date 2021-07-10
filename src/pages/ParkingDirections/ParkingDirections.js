@@ -4,16 +4,6 @@ const ParkingDirections = ({ onRouteChange, origin, destination, modeOfTransport
 
     const google = window.google;
 
-    // const getTravelMode = () => {
-    //     switch(modeOfTransport) {
-    //         case "DRIVING":
-    //             return google.maps.TravelMode.DRIVING
-    //         case "WALKING":
-    //             return google.maps.TravelMode.WALKING
-    //         case
-    //     }
-    // }
-
     useEffect(() => {
         if (google) {
             const directionsRenderer = new google.maps.DirectionsRenderer();

@@ -633,7 +633,11 @@ hr {
   width: 100%;
   padding: 10px 0;
   margin: 5px 0;
-
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #ccc;
+  /* border-radius: 10px; */
+  outline: none;
   
   /* This remove default dropdown styling applied by browser */
   appearance: none;
@@ -647,10 +651,6 @@ hr {
   /* icon size, then gradient */
   background-size: .65em auto, 100%;
 
-  border: none;
-  border-bottom: 1px solid #ccc;
-  /* border-radius: 10px; */
-  outline: none;
 }
 
 .directions-btn {

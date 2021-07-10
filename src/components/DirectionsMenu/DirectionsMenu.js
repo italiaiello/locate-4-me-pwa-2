@@ -42,7 +42,7 @@ const DirectionsMenu = ({ onRouteChange, setOrigin, setDestination, setModeOfTra
                 <div className="directions-dropdown-and-label">
                     <label>Starting Point</label>
                     <select className="directions-dropdown" onChange={(e) => setSelectedOrigin(e.target.value)} value={selectedOrigin ? selectedOrigin : "0"}>
-                        <option disabled value="0">Select Origin</option>
+                        <option disabled value="0">Select Starting Point</option>
                         {
                             pins.map((pin, index) => (
                                 <option key={index} value={`${pin.lat}, ${pin.lng}`}>{pin.address}</option>
@@ -53,7 +53,7 @@ const DirectionsMenu = ({ onRouteChange, setOrigin, setDestination, setModeOfTra
                 <div className="directions-dropdown-and-label">
                     <label>Destination</label>
                     <select className="directions-dropdown" onChange={(e) => setSelectedDestination(e.target.value)} value={selectedDestination ? selectedDestination.address : "0"}>
-                        <option disabled value="0">Selected Destination</option>
+                        <option disabled value="0">Select Destination</option>
                         {
                             pins.map((pin, index) => (
                                 <option key={index} value={`${pin.lat}, ${pin.lng}`}>{pin.address}</option>

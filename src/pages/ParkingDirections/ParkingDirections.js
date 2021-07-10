@@ -32,10 +32,10 @@ const ParkingDirections = ({ onRouteChange, origin, destination, modeOfTransport
 
 
     return (
-        <section className="parking-directions">
+        <article className="parking-directions">
             <button className="back-btn" onClick={() => onRouteChange('home')}>Back</button>
             <section id="parking-map" className="google-map"></section>
-        </section>
+        </article>
     )
 }
 

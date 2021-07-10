@@ -552,7 +552,7 @@ hr {
   justify-content: center;
   align-items: center;
   background-color: white;
-  box-shadow: 1px -5px 20px #979797;
+  box-shadow: 1px -1px 10px #747474;
   color: #b9a4ce;
   padding: 10px 0;
 }
@@ -593,11 +593,26 @@ hr {
   opacity: 1;
 }
 
-.parking-options-arrow-container {
+.parking-options-compass-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  background-color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 10px;
+  margin-bottom: 20px;
+  box-shadow: 1px 2px 5px #808080;
+}
+
+.parking-options-compass-container figure {
+  margin: 0px;
+}
+
+.parking-options-compass-container .responsive-img {
+  width: 70%;
+  height: auto;
 }
 
 /* Directions Menu */

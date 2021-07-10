@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DirectionsMenu from '../DirectionsMenu/DirectionsMenu'
-import ExpandMenuArrow from '../ExpandMenuArrow/ExpandMenuArrow'
+import DirectionsButton from '../DirectionsButton/DirectionsButton'
 import PaidParking from '../../assets/icons/parking-meter.svg'
 import HouredParking from '../../assets/icons/timed-parking.svg'
 import FreeParking from '../../assets/icons/free-parking-coin.svg'
@@ -10,7 +10,7 @@ import Close from '../../assets/icons/close.svg'
 const ParkingOptions = ({ onOptionSelect, onRouteChange, setOrigin, setDestination, setModeOfTransport }) => {
 
     const [optionName, setOptionName] = useState(null)
-    const [isMenuExpanded, setIsMenuExpanded] = useState(true)
+    const [showDirectionsMenu, setShowDirectionsMenu] = useState(false)
 
     const handleOption = (e) => {
         onOptionSelect(e)
@@ -28,9 +28,7 @@ const ParkingOptions = ({ onOptionSelect, onRouteChange, setOrigin, setDestinati
                     </figure>
                 </article>
             }
-            <article className="parking-options-arrow-container">
-                <ExpandMenuArrow isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} />
-            </article>
+            <DirectionsButton showDirectionsMenu={showDirectionsMenu} setShowDirectionsMenu={setShowDirectionsMenu} />
             <section className="parking-options">
                 <p>Filter:</p>
                 <article className="options-article">
@@ -49,7 +47,7 @@ const ParkingOptions = ({ onOptionSelect, onRouteChange, setOrigin, setDestinati
                 </article>
             </section>
             {
-                !isMenuExpanded &&
+                showDirectionsMenu &&
                 <DirectionsMenu 
                     onRouteChange={onRouteChange} 
                     setOrigin={setOrigin}

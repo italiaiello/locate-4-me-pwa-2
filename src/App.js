@@ -20,6 +20,8 @@ function App() {
   const [destination, setDestination] = useState(null)
   const [modeOfTransport, setModeOfTransport] = useState(null)
 
+  const [currentLocation, setCurrentLocation] = useState(null)
+
   const onRouteChange = (newRoute) => setRoute(newRoute) 
   
   useEffect(() => {
@@ -65,6 +67,8 @@ function App() {
           setOrigin={setOrigin}
           setDestination={setDestination}
           setModeOfTransport={setModeOfTransport}
+          currentLocation={currentLocation}
+          setCurrentLocation={setCurrentLocation}
       />
       case 'directions':
         return <ParkingDirections onRouteChange={onRouteChange} origin={origin} destination={destination} modeOfTransport={modeOfTransport} />

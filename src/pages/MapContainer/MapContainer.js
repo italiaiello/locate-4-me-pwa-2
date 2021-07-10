@@ -4,9 +4,8 @@ import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
 import MapSplashPage from '../MapSplashPage/MapSplashPage'
 import NavBar from '../../components/NavBar/NavBar'
 
-const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTransport }) => {
+const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTransport, currentLocation, setCurrentLocation }) => {
 
-    const [currentLocation, setCurrentLocation] = useState(null)
     const [locationError, setLocationError] = useState(null)
 
     const [storageAddress, setStorageAddress] = useState(null)
@@ -18,6 +17,11 @@ const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTrans
     const [showSearchedLocation, setShowSearchedLocation] = useState(false)
 
     useEffect(() => {
+
+        if (currentLocation) {
+            return;
+        }
+
         const successCallback = (position) => {
             setCurrentLocation({
                 address: "Your Current Location",
@@ -36,7 +40,7 @@ const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTrans
             timeout: 5000
         })
 
-    }, [])
+    }, [currentLocation])
 
     
 

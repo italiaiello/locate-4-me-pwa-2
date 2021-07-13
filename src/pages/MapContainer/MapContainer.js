@@ -4,7 +4,7 @@ import ParkingOptions from '../../components/ParkingOptions/ParkingOptions'
 import MapSplashPage from '../MapSplashPage/MapSplashPage'
 import NavBar from '../../components/NavBar/NavBar'
 
-const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTransport, currentLocation, setCurrentLocation }) => {
+const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTransport, currentLocation, setCurrentLocation, pins }) => {
 
     const [locationError, setLocationError] = useState(null)
 
@@ -144,6 +144,8 @@ const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTrans
                             showRedPins={showRedPins}
                             showSecureParking={showSecureParking}
                             setShowSecureParkingPins={setShowSecureParkingPins}
+                            pins={pins}
+
                         />
                         :
                         (
@@ -159,6 +161,7 @@ const MapContainer = ({ onRouteChange, setOrigin, setDestination, setModeOfTrans
                                 showRedPins={showRedPins} 
                                 showSecureParking={showSecureParking}
                                 setShowSecureParkingPins={setShowSecureParkingPins}
+                                pins={pins}
                             />
                             :
                             <MapSplashPage />

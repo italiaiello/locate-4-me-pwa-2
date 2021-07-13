@@ -3,12 +3,11 @@ import GoogleMapReact from 'google-map-react'
 import LocationPinAndTooltip from '../LocationPinAndTooltip/LocationPinAndTooltip'
 import { MapStyles } from './MapStyles'
 import './Map.css'
-import { pins } from '../../Pins/Pins'
 import { newpins } from '../../Pins/NewPins'
 import { getPin } from '../../functions/getPin'
 import { renderPins } from '../../functions/renderPins'
 
-const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrangePins, showPurplePins, showBluePins, showRedPins, showSecureParking }) => {
+const Map = ({ location, isLocationAllowed, storageAddress, zoomLevel, showOrangePins, showPurplePins, showBluePins, showRedPins, showSecureParking, pins }) => {
 
   const [searchedLocation, setSearchedLoaction] = useState(null)
 

@@ -69,6 +69,7 @@ function App() {
           setModeOfTransport={setModeOfTransport}
           currentLocation={currentLocation}
           setCurrentLocation={setCurrentLocation}
+          pins={pins}
       />
       case 'directions':
         return <ParkingDirections onRouteChange={onRouteChange} origin={origin} destination={destination} modeOfTransport={modeOfTransport} />
